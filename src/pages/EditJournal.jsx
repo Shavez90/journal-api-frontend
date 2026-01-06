@@ -18,7 +18,8 @@ const EditJournal = () => {
   const fetchJournal = async () => {
     try {
       const response = await journalAPI.getById(id);
-      const journal = response.data.data;
+      // Backend returns journal object directly in response.data
+      const journal = response.data;
       setFormData({ title: journal.title, content: journal.content });
     } catch (err) {
       setError('Failed to load journal entry');
