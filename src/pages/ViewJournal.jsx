@@ -18,7 +18,7 @@ const ViewJournal = () => {
   const fetchJournal = async () => {
     try {
       const response = await journalAPI.getById(id);
-      setJournal(response.data.data);
+      setJournal(response.data);
     } catch (err) {
       setError('Failed to load journal entry');
     } finally {

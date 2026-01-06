@@ -15,9 +15,7 @@ const Dashboard = () => {
   const fetchJournals = async () => {
     try {
       const response = await journalAPI.getAll();
-     // Backend returns array directly, not wrapped
-const journalData = Array.isArray(response.data) ? response.data : (response.data.data || []);
-setJournals(journalData);
+      setJournals(response.data);
     } catch (err) {
       setError('Failed to load journals');
     } finally {

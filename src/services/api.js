@@ -36,7 +36,6 @@ api.interceptors.response.use(
 export const authAPI = {
   register: (data) => api.post('/users', data),
   login: (data) => api.post('/auth/login', data),
-  logout: (refreshToken) => api.post('/auth/logout', { refreshToken }),
 };
 
 // Journal APIs
