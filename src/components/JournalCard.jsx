@@ -28,7 +28,7 @@ const JournalCard = ({ journal }) => {
           <h3 className="text-xl font-bold text-moss group-hover:text-moss-dark transition-colors duration-300 pr-4">{journal.title}</h3>
           <span className="text-sm text-gray-500 font-medium whitespace-nowrap">{formatDate(journal.createdAt)}</span>
         </div>
-        <p className="text-gray-600 leading-relaxed line-clamp-3 mb-4">
+        <p className="text-gray-600 leading-relaxed mb-4">
           {truncateContent(journal.content)}
         </p>
         <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
