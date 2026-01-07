@@ -36,36 +36,36 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm border-b border-sage/20">
+    <nav className="bg-gradient-primary shadow-medium border-b border-white/20 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-8">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center space-x-10">
             <h1 
-              className="text-2xl font-bold text-moss cursor-pointer"
+              className="text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-200 tracking-wide"
               onClick={() => navigate('/dashboard')}
             >
               📖 My Journal
             </h1>
             <button
               onClick={() => navigate('/create')}
-              className="px-4 py-2 bg-sage text-white rounded-lg hover:bg-moss transition"
+              className="px-6 py-2.5 bg-white/95 text-moss rounded-xl hover:bg-white hover:shadow-medium transition-all duration-300 font-semibold hover:scale-105 transform"
             >
               + New Entry
             </button>
           </div>
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-8">
             <div className="text-right">
-              <div className="text-lg font-semibold text-moss">
+              <div className="text-lg font-bold text-white tracking-wide">
                 {formatTime(currentTime)}
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-white/80 font-medium">
                 {formatDate(currentTime)}
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 bg-terracotta text-white rounded-lg hover:bg-terracotta/80 transition"
+              className="px-6 py-2.5 bg-terracotta text-white rounded-xl hover:bg-terracotta-dark hover:shadow-medium transition-all duration-300 font-semibold hover:scale-105 transform"
             >
               Logout
             </button>

@@ -49,10 +49,11 @@ const ViewJournal = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-cream">
+      <div className="min-h-screen bg-gradient-soft">
         <Navbar />
-        <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sage"></div>
+        <div className="text-center py-20">
+          <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-sage/30 border-t-sage"></div>
+          <p className="mt-4 text-sage-dark font-medium">Loading journal...</p>
         </div>
       </div>
     );
@@ -60,10 +61,10 @@ const ViewJournal = () => {
 
   if (error || !journal) {
     return (
-      <div className="min-h-screen bg-cream">
+      <div className="min-h-screen bg-gradient-soft">
         <Navbar />
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <div className="bg-red-50 text-red-600 p-4 rounded-lg">
+        <div className="max-w-4xl mx-auto px-4 py-10">
+          <div className="bg-red-50 text-red-600 p-5 rounded-2xl border border-red-100 shadow-soft">
             {error || 'Journal not found'}
           </div>
         </div>
@@ -72,47 +73,47 @@ const ViewJournal = () => {
   }
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-gradient-soft">
       <Navbar />
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div className="flex justify-between items-start mb-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="bg-white rounded-3xl shadow-large p-10 animate-scale-in border border-sage/10">
+          <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-4xl font-bold text-moss mb-2">{journal.title}</h1>
-              <p className="text-gray-500 text-sm">
+              <h1 className="text-5xl font-bold text-moss mb-4 tracking-tight leading-tight">{journal.title}</h1>
+              <p className="text-gray-500 text-sm font-medium">
                 Created: {formatDate(journal.createdAt)}
               </p>
               {journal.updatedAt !== journal.createdAt && (
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm font-medium mt-1">
                   Last edited: {formatDate(journal.updatedAt)}
                 </p>
               )}
             </div>
           </div>
 
-          <div className="prose max-w-none mb-8">
+          <div className="prose max-w-none mb-10">
             <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-wrap">
               {journal.content}
             </p>
           </div>
 
-          <div className="flex space-x-4 pt-6 border-t border-gray-200">
+          <div className="flex space-x-4 pt-8 border-t-2 border-gray-100">
             <button
               onClick={() => navigate('/dashboard')}
-              className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+              className="px-8 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 hover:shadow-soft transition-all duration-300 font-bold"
             >
               ← Back to Dashboard
             </button>
             <button
               onClick={() => navigate(`/edit/${id}`)}
-              className="px-6 py-2 bg-sage text-white rounded-lg hover:bg-moss transition"
+              className="px-8 py-3 bg-gradient-primary text-white rounded-xl hover:shadow-medium transition-all duration-300 font-bold hover:scale-105 transform"
             >
               Edit
             </button>
             <button
               onClick={() => setShowDeleteConfirm(true)}
-              className="px-6 py-2 bg-terracotta text-white rounded-lg hover:bg-terracotta/80 transition"
+              className="px-8 py-3 bg-terracotta text-white rounded-xl hover:bg-terracotta-dark hover:shadow-medium transition-all duration-300 font-bold hover:scale-105 transform"
             >
               Delete
             </button>
@@ -122,22 +123,22 @@ const ViewJournal = () => {
 
       {/* Delete Confirmation Modal */}
       {showDeleteConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 max-w-md mx-4">
-            <h3 className="text-xl font-bold text-moss mb-4">Delete Journal Entry?</h3>
-            <p className="text-gray-600 mb-6">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
+          <div className="bg-white rounded-2xl p-8 max-w-md mx-4 shadow-large animate-scale-in border border-sage/10">
+            <h3 className="text-2xl font-bold text-moss mb-4">Delete Journal Entry?</h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
               Are you sure you want to delete this entry? This action cannot be undone.
             </p>
             <div className="flex space-x-4">
               <button
                 onClick={handleDelete}
-                className="flex-1 bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
+                className="flex-1 bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 hover:shadow-medium transition-all duration-300 font-bold"
               >
                 Yes, Delete
               </button>
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition"
+                className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 font-bold"
               >
                 Cancel
               </button>
